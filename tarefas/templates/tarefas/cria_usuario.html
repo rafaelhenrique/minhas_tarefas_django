@@ -5,9 +5,26 @@
         </div>
         <form method="POST" action=".">
           {% csrf_token %}
-          {{ form.as_p }}
+          {#{ form.as_p }#}
           {#{ form.as_table }#}
           {#{ form.as_ul }#}
-          <input type="submit" value="Criar">
+          <!-- Este erro ele levanta se o erro nao for de validacao -->
+          {{ form.non_field_errors }}
+          {% for field in form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}" class="label-control">
+              {{field.label}}
+              {% if field.field.required %}*{% endif %}
+            </label>
+            {{field}}
+            {% if field.errors %}
+            <div class="alert alert-danger">{{field.errors}}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Criar</button>
         </form>
+        <script>
+          $("input").addClass("form-control");
+        </script>
 {% endblock %}
