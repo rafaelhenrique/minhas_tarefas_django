@@ -9,6 +9,7 @@ from django.template.context import RequestContext
 
 from tarefas.models import Tarefa
 from tarefas.forms import FormNovoUsuario
+from tarefas.forms import FormTarefa
 
 
 class Home(View):
@@ -44,7 +45,27 @@ class CriaUsuario(View):
         return render_to_response(self.template_name,
                                   self.context, RequestContext(request))
 
+
+class AdicionaTarefa(View):
+    template_name = 'tarefas/cria_tarefa.html'
+    context = {}
+
+    def get(self, request, *args, **kwargs):
+        self.context['form'] = FormTarefa()
+        return render_to_response(self.template_name,
+                                  self.context, RequestContext(request))
+
+    def post(self, request, *args, **kwargs):
+        form = FormTarefa(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        self.context['form'] = form
+        return render_to_response(self.template_name,
+                                  self.context, RequestContext(request))
+
 __all__ = [
     "Home",
-    "CriaUsuario"
+    "CriaUsuario",
+    "AdicionaTarefa",
 ]

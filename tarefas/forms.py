@@ -4,6 +4,9 @@ from django.forms import EmailField
 from django.forms import PasswordInput
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.forms import ModelForm
+
+from tarefas.models import Tarefa
 
 
 class FormNovoUsuario(Form):
@@ -32,3 +35,9 @@ class FormNovoUsuario(Form):
         if senha1 != senha2:
             raise ValidationError("As senhas digitadas não conferem")
         return senha1
+
+
+class FormTarefa(ModelForm):
+    class Meta:
+        model = Tarefa
+        fields = ['nome', 'descricao', 'finalizado']

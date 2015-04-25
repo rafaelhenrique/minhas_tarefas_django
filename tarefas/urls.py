@@ -4,6 +4,7 @@ from tarefas.views import Home
 from tarefas.views import TarefasView
 from tarefas.views import TarefaDetail
 from tarefas.views import CriaUsuario
+from tarefas.views import AdicionaTarefa
 
 urlpatterns = patterns(
     '',
@@ -16,4 +17,7 @@ urlpatterns = patterns(
     url(r'^criar_usuario/$',
         CriaUsuario.as_view(),
         name='criar_usuario'),
+    url(r'^criar_tarefa/$',
+        AdicionaTarefa.as_view(),
+        name='criar_tarefa'),
 )
