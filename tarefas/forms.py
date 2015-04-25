@@ -17,7 +17,7 @@ class FormNovoUsuario(Form):
         params = {
             'username': self.cleaned_data['nome_de_usuario'],
             'email': self.cleaned_data['email'],
-            'password': self.cleaned_data['password']
+            'password': self.cleaned_data['senha']
         }
         if self.cleaned_data['nome']:
             params['first_name'] = self.cleaned_data['nome']
@@ -25,7 +25,7 @@ class FormNovoUsuario(Form):
 
     # Esse metodo tem que ter o nome clean_<campo>
     # eh um metodo de validacao de campos do Django
-    def clean_repeticao_senha(self, senha):
+    def clean_repeticao_senha(self):
         senha1 = self.cleaned_data['senha']
         senha2 = self.cleaned_data['repeticao_senha']
 
