@@ -2,12 +2,18 @@
   <head>
   </head>
   <body>
-    <ul>
-      {% for item in latest %}
-      <li>
-        <a href="/tarefas/{{item.pk}}/"> {{item.nome}} {{item.status}}</a>
-      </li>
-      {% endfor %}
-    </ul>
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Data de criação</th>
+      <th>Status</th>
+    </tr>      
+    {% for item in latest %}
+    <tr>
+      <td><a href="/tarefas/{{item.pk}}/"> {{item.nome}} {{item.status}}</a></td>
+      <td>{{item.data_de_criacao}}</td>
+      <td>{{item.status}}</td>
+    </tr>
+    {% endfor %}
   </body>
 </html>
