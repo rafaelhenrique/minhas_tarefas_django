@@ -18,4 +18,7 @@ class TarefaAdmin(ModelAdmin):
     # quais campos serao editaveis na lista geral
     list_editable = ['finalizado']
 
+    # adicionar campo de busca por nome
+    search_fields = ['nome']
+
 site.register(Tarefa, TarefaAdmin)
