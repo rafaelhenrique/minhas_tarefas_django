@@ -15,4 +15,5 @@ class TarefaDetail(DetailView):
 # Cria uma lista com nome das coisas que vc quer disponibilizar
 __all__ = [
     'TarefasView',
+    'TarefaDetail',
 ]
