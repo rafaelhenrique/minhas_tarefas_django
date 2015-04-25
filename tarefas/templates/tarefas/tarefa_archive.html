@@ -11,8 +11,8 @@
     {% for item in latest %}
     <tr>
       <td><a href="/tarefas/{{item.pk}}/"> {{item.nome}} {{item.status}}</a></td>
-      <td>{{item.data_de_criacao}}</td>
-      <td>{{item.status}}</td>
+      <td>{{item.data_de_criacao|date:"d/m/Y H:i"}}</td>
+      <td>{% if item.finalizado %} Sim {% else %} Não {% endif %}</td>
     </tr>
     {% endfor %}
   </body>
