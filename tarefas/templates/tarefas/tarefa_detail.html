@@ -1,0 +1,13 @@
+<html>
+  <head>
+  </head>
+  <body>
+    Nome: {{object.nome}}<br />
+    Data da Criação: {{object.data_de_criacao}}<br />
+    Descrição: {{object.descricao}}<br />
+    Status: {% if object.finalizado %} Finalizado {% else %} Aberto {% endif %}
+    {% if object.data_de_execucao %}
+    Data de Execução: {{object.data_de_execucao}}
+    {% endif %}
+  </body>
+</html>
