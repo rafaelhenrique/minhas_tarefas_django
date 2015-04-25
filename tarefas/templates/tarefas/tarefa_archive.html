@@ -1,19 +1,24 @@
-<html>
-  <head>
-  </head>
-  <body>
-  <table>
-    <tr>
-      <th>Nome</th>
-      <th>Data de criação</th>
-      <th>Status</th>
-    </tr>      
-    {% for item in latest %}
-    <tr>
-      <td><a href="/tarefas/{{item.pk}}/"> {{item.nome}} {{item.status}}</a></td>
-      <td>{{item.data_de_criacao|date:"d/m/Y H:i"}}</td>
-      <td>{% if item.finalizado %} Sim {% else %} Não {% endif %}</td>
-    </tr>
-    {% endfor %}
-  </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+        <div class="page-header">
+          <h2>Minhas Tarefas</h2>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data de criação</th>
+              <th>Status</th>
+            </tr>  
+          </thead> 
+          <tbody>   
+            {% for item in latest %}
+            <tr>
+              <td><a href="/tarefas/{{item.pk}}/"> {{item.nome}} {{item.status}}</a></td>
+              <td>{{item.data_de_criacao|date:"d/m/Y H:i"}}</td>
+              <td>{% if item.finalizado %} Sim {% else %} Não {% endif %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+{% endblock %}
