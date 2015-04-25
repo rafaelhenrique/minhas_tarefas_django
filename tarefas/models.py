@@ -25,3 +25,6 @@ class Tarefa(Model):
         # esses verbose servem para traducao
         verbose_name = 'tarefa'
         verbose_name_plural = 'tarefas'
+
+    def __str__(self):
+        return self.nome
