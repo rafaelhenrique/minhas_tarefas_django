@@ -14,7 +14,10 @@ class Tarefa(Model):
     # auto_now quando criar/atualizar o objeto usa a data/hora atual
     data_de_criacao = DateTimeField(auto_now_add=True,
                                     verbose_name='data de criação')
-    data_de_execucao = DateTimeField(verbose_name='data de execução')
+    # blank = aceita o campo em branco
+    # null = aceita que no banco de dados ele pode ter valor null
+    data_de_execucao = DateTimeField(verbose_name='data de execução',
+                                     blank=True, null=True)
     finalizado = BooleanField(default=False, verbose_name='finalizado')
 
     class Meta:
