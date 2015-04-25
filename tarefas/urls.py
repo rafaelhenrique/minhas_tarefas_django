@@ -3,6 +3,7 @@ from django.conf.urls import patterns, url
 from tarefas.views import Home
 from tarefas.views import TarefasView
 from tarefas.views import TarefaDetail
+from tarefas.views import CriaUsuario
 
 urlpatterns = patterns(
     '',
@@ -12,4 +13,7 @@ urlpatterns = patterns(
     url(r'^tarefas/(?P<pk>\d+)/$',
         TarefaDetail.as_view(),
         name='tarefas_detail'),
+    url(r'^criar_usuario/$',
+        CriaUsuario.as_view(),
+        name='criar_usuario'),
 )

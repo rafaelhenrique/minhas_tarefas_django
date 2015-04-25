@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="page-header">
+          <h2>Criação de Usuário</h2>
+        </div>
+        <form method="POST" action=".">
+          {% csrf_token %}
+          {{ form.as_p }}
+          {#{ form.as_table }#}
+          {#{ form.as_ul }#}
+          <input type="submit" value="Criar">
+        </form>
+{% endblock %}
