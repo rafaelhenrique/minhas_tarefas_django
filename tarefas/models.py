@@ -8,7 +8,7 @@ from django.db.models import DateTimeField
 class Tarefa(Model):
     # verbose name serve para os labels do formulario
     # ajuda tambem na traducao, depois para fazer um de para das palavras
-    nome = CharField(max_lenght=100, verbose_name='nome')
+    nome = CharField(max_length=100, verbose_name='nome')
     descricao = TextField(verbose_name='descrição')
     # auto_now_add quando criar o objeto usa a data/hora atual
     # auto_now quando criar/atualizar o objeto usa a data/hora atual
