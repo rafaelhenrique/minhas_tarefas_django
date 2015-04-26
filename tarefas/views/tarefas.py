@@ -58,7 +58,9 @@ class AdicionaTarefa(View):
     def post(self, request, *args, **kwargs):
         form = FormTarefa(request.POST)
         if form.is_valid():
-            form.save()
+            tarefa = form.save()
+            tarefa.usuario = request.user
+            tarefa.save()
             return redirect('/')
         self.context['form'] = form
         return render_to_response(self.template_name,

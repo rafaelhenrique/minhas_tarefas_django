@@ -3,6 +3,9 @@ from django.db.models import BooleanField
 from django.db.models import CharField
 from django.db.models import TextField
 from django.db.models import DateTimeField
+from django.db.models import ForeignKey
+
+from django.contrib.auth.models import User
 
 
 class Tarefa(Model):
@@ -19,6 +22,16 @@ class Tarefa(Model):
     data_de_execucao = DateTimeField(verbose_name='data de execução',
                                      blank=True, null=True)
     finalizado = BooleanField(default=False, verbose_name='finalizado')
+
+    # todas as relacoes do django sao bi-direcionais
+    # related_name serve para que consiga fazer a query de user para tarefa
+
+    # Se nao colocar related_name ele escreve um related_name:
+    # FK - <atributo>_set
+    # N to N - <atributo>s
+    # 1 to 1 - <atributo>
+    usuario = ForeignKey(User, verbose_name='usuário', related_name='tarefas',
+                         blank=True, null=True)
 
     class Meta:
         ordering = ['-data_de_criacao']
