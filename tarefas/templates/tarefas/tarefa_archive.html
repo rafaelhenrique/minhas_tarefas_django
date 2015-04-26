@@ -8,7 +8,8 @@
             <tr>
               <th>Nome</th>
               <th>Data de criação</th>
-              <th>Status</th>
+              <th>Finalizado</th>
+              <th>Usuário</th>
             </tr>  
           </thead> 
           <tbody>   
@@ -17,6 +18,7 @@
               <td><a href="/tarefas/{{item.pk}}/"> {{item.nome}} {{item.status}}</a></td>
               <td>{{item.data_de_criacao|date:"d/m/Y H:i"}}</td>
               <td>{% if item.finalizado %} Sim {% else %} Não {% endif %}</td>
+              <td>{{ item.usuario }}</td>
             </tr>
             {% endfor %}
           </tbody>
