@@ -9,6 +9,6 @@
       {% else %}
       <a href="/admin/login/?next=/">Login</a>
       ||
-      <a href="/criar_usuario/">Criar usuário</a>
+      <a href="{% url "criar_usuario" %}">Criar usuário</a>
       {% endif %}
 {% endblock %}
