@@ -8,6 +8,12 @@ class TarefasView(ArchiveIndexView):
     model = Tarefa
     date_field = 'data_de_criacao'
 
+    # O com o super eu chamo o get da classe mãe, portanto eu mudo o queryset
+    # depois chamo o get original da classe mãe
+    def get(self, request, *args, **kwargs):
+        self.queryset = Tarefa.objects.filter(usuario=request.user)
+        return super().get(request, *args, **kwargs)
+
 
 class TarefaDetail(DetailView):
     model = Tarefa
