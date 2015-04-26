@@ -32,3 +32,10 @@ class HomeTestCase(TestCase):
         self.client.login(username='admin', password='123')
         response = self.client.get('/')
         self.assertNotContains(response, "Login")
+
+    def test_login_volta_pra_home(self):
+        response = self.client.get('/')
+        if not response.context['user'].is_autenticated():
+            self.assertContains(response,
+                                '<a href="/admin/login/?next=/">Login</a>',
+                                html=True)
