@@ -19,7 +19,7 @@ class CriaTarefaTesteCase(TestCase):
 
 class HomeTestCase(TestCase):
     def setUp(self):
-        User.objects.create(username='admin', password='123')
+        User.objects.create_user(username='admin', password='123')
 
     def test_home_access(self):
         response = self.client.get('/')
