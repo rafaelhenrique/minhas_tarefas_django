@@ -11,7 +11,7 @@ class TarefasView(ArchiveIndexView):
     # O com o super eu chamo o get da classe mãe, portanto eu mudo o queryset
     # depois chamo o get original da classe mãe
     def get(self, request, *args, **kwargs):
-        self.queryset = Tarefa.objects.filter(usuario=request.user)
+        self.queryset = Tarefa.objects.filter(usuario=request.user.id)
         return super().get(request, *args, **kwargs)
 
 
