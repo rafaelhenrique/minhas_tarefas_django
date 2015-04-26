@@ -20,7 +20,7 @@ class Home(View):
         # Este objects eh a instancia de um manager que executa as funcoes
         # de acesso ao banco
         self.context['counter'] = Tarefa.objects.filter(
-            finalizado=False).count()
+            finalizado=False, usuario=request.user).count()
         return render_to_response(self.template_name,
                                   self.context, RequestContext(request))
 
